@@ -1,13 +1,14 @@
 A collection of Django project templates
 ========================================
 
-Things it should configure:
+Settings configurations
 
 * Database
 * Logging
 * Static files
 * Registration URLs (password reset)
 * Email
+* Tests
 * Initial user(s)
 * Dev/Production status
 
@@ -46,11 +47,15 @@ settings values, such as site admin name/email. It might also create a new hash
 for a project secret key.
 
 There should be a multilingual option (or a "one language" or English option).
+This should include utilites for easy translation.
+
+It should also include templates or easy configuration for app deployment
+services, e.g. Gondor, ep.io, Heroku, etc.
 
 Influences
 ==========
 
 * Pinax
+* Zachary Voase's Django project conventions
 * Audrey Roy's django-handstand project
 * Read the Docs
-* Zachary Voase's Django project conventions

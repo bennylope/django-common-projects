@@ -11,21 +11,13 @@ ADMINS = (
 
 MANAGERS = ADMINS
 
-#PROJECT_ROOT = path(__file__).abspath().dirname()
-PROJECT_ROOT = os.path.split(os.path.dirname(__file__))[0]
+# Set the project root for cleanly setting media, static, and template
+# directories
+settings_dir = os.path.dirname(__file__)
+PROJECT_ROOT = os.path.abspath(os.path.dirname(settings_dir))
 
-DATABASES = {
-    'default': {
-        'ENGINE': 'django.db.backends.sqlite3', # Add 'postgresql_psycopg2', 'postgresql', 'mysql', 'sqlite3' or 'oracle'.
-        'NAME': os.path.join(PROJECT_ROOT, 'dev.db'), # Or path to database file if using sqlite3.
-        'USER': '',                      # Not used with sqlite3.
-        'PASSWORD': '',                  # Not used with sqlite3.
-        'HOST': '',                      # Set to empty string for localhost. Not used with sqlite3.
-        'PORT': '',                      # Set to empty string for default. Not used with sqlite3.
-    }
-}
 
-#sys.path.append(path(PROJECT_ROOT / 'apps/'))
+# Put site specific apps in the apps folder
 sys.path.append(os.path.join(PROJECT_ROOT, 'apps/'))
 
 # Local time zone for this installation. Choices can be found here:
@@ -49,11 +41,10 @@ USE_I18N = False
 
 # If you set this to False, Django will not format dates, numbers and
 # calendars according to the current locale
-USE_L10N = False
+USE_L10N = True
 
 # Absolute filesystem path to the directory that will hold user-uploaded files.
 # Example: "/home/media/media.lawrence.com/media/"
-#MEDIA_ROOT = path(PROJECT_ROOT / 'media/')
 MEDIA_ROOT = os.path.join(PROJECT_ROOT, 'media/')
 
 # URL that handles the media served from MEDIA_ROOT. Make sure to use a
@@ -65,7 +56,6 @@ MEDIA_URL = ''
 # Don't put anything in this directory yourself; store your static files
 # in apps' "static/" subdirectories and in STATICFILES_DIRS.
 # Example: "/home/media/media.lawrence.com/static/"
-#STATIC_ROOT = path(PROJECT_ROOT / 'collectedstaticfiles/')
 STATIC_ROOT = os.path.join(PROJECT_ROOT, 'collectedstaticfiles/')
 
 # URL prefix for static files.
@@ -82,7 +72,6 @@ STATICFILES_DIRS = (
     # Put strings here, like "/home/html/static" or "C:/www/django/static".
     # Always use forward slashes, even on Windows.
     # Don't forget to use absolute paths, not relative paths.
-    #path(PROJECT_ROOT / 'static'),
     os.path.join(PROJECT_ROOT, 'static/'),
 )
 
@@ -93,9 +82,6 @@ STATICFILES_FINDERS = (
     'django.contrib.staticfiles.finders.AppDirectoriesFinder',
 #    'django.contrib.staticfiles.finders.DefaultStorageFinder',
 )
-
-# Make this unique, and don't share it with anybody.
-SECRET_KEY = 'm^33!97e9d2e5ra)%zm!!sdnn1z#!d(xf=93pttawp$)e(^&)!'
 
 # List of callables that know how to import templates from various sources.
 TEMPLATE_LOADERS = (
@@ -119,7 +105,6 @@ TEMPLATE_DIRS = (
     # Always use forward slashes, even on Windows.
     # Don't forget to use absolute paths, not relative paths.
     os.path.join(PROJECT_ROOT, 'templates/')
-    #path(PROJECT_ROOT / 'templates/'),
 )
 
 INSTALLED_APPS = (
@@ -164,4 +149,3 @@ LOGIN_REDIRECT_URL = '/admin/'
 # South settings
 
 
-# Debug toolbar settings
