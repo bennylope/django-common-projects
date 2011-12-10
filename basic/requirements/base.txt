@@ -11,5 +11,8 @@ south
 django-debug-toolbar
 django-extensions
 
+### Logging
+sentry
+
 ### Deployment
 fabric
