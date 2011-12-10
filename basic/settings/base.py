@@ -11,20 +11,19 @@ ADMINS = (
 
 MANAGERS = ADMINS
 
+#PROJECT_ROOT = path(__file__).abspath().dirname()
+PROJECT_ROOT = os.path.split(os.path.dirname(__file__))[0]
+
 DATABASES = {
     'default': {
         'ENGINE': 'django.db.backends.sqlite3', # Add 'postgresql_psycopg2', 'postgresql', 'mysql', 'sqlite3' or 'oracle'.
-        'NAME': 'dev.db',                      # Or path to database file if using sqlite3.
+        'NAME': os.path.join(PROJECT_ROOT, 'dev.db'), # Or path to database file if using sqlite3.
         'USER': '',                      # Not used with sqlite3.
         'PASSWORD': '',                  # Not used with sqlite3.
         'HOST': '',                      # Set to empty string for localhost. Not used with sqlite3.
         'PORT': '',                      # Set to empty string for default. Not used with sqlite3.
     }
 }
-
-PROJECT_ROOT = os.path.realpath(os.path.dirname(__file__))
-
-#PROJECT_ROOT = path(__file__).abspath().dirname()
 
 #sys.path.append(path(PROJECT_ROOT / 'apps/'))
 sys.path.append(os.path.join(PROJECT_ROOT, 'apps/'))
