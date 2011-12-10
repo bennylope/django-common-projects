@@ -116,6 +116,9 @@ INSTALLED_APPS = (
     'django.contrib.staticfiles',
     'django.contrib.admin',
     'django.contrib.admindocs',
+    'south',
+    'sentry',
+    'sentry.client',
 )
 
 # A sample logging configuration. The only tangible logging
@@ -130,13 +133,27 @@ LOGGING = {
         'mail_admins': {
             'level': 'ERROR',
             'class': 'django.utils.log.AdminEmailHandler'
+        },
+        'sentry': {
+            'level': 'INFO',
+            'class': 'sentry.client.handlers.SentryHandler',
         }
     },
     'loggers': {
+        'django': {
+            'handlers':['sentry'],
+            'propagate': True,
+            'level':'INFO',
+        },
         'django.request': {
             'handlers': ['mail_admins'],
             'level': 'ERROR',
             'propagate': True,
+        },
+        'joblister': {
+            'handlers': ['sentry'],
+            'propogate': True,
+            'level': 'INFO',
         },
     }
 }
@@ -145,7 +162,19 @@ LOGGING = {
 LOGIN_URL = '/admin/'
 LOGIN_REDIRECT_URL = '/admin/'
 
-
-# South settings
-
-
+# South migration settings
+# South is used to manage database migrations. This is documented on the South
+# webpage http://south.aeracode.org/docs/settings.html. The available settings
+# include:
+# SKIP_SOUTH_TESTS
+# SOUTH_DATABASE_ADAPTER
+# SOUTH_DATABASE_ADAPTERS
+# MySQL STORAGE_ENGINE
+# SOUTH_AUTO_FREEZE_APP
+# SOUTH_TESTS_MIGRATE
+# SOUTH_LOGGING_ON
+# SOUTH_LOGGING_FILE
+# SOUTH_MIGRATION_MODULES
+# SOUTH_USE_PYC
+SKIP_SOUTH_TESTS = True
+SOUTH_TESTS_MIGRATE = False
