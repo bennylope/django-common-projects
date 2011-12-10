@@ -1,0 +1,18 @@
+# This is for base requirements only.
+# Any project specific requirements should go in project.txt
+
+### Django, derp derp
+Django
+
+### Data migrations
+south
+
+### Development
+django-debug-toolbar
+django-extensions
+
+### Logging
+sentry
+
+### Deployment
+fabric
