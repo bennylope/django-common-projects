@@ -5,14 +5,14 @@
 Django
 
 ### Data migrations
-south
+South
 
 ### Development
 django-debug-toolbar
 django-extensions
 
 ### Logging
-sentry
+django-sentry
 
 ### Deployment
-fabric
+Fabric

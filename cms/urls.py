@@ -21,3 +21,8 @@ if settings.DEBUG:
                 {'document_root': settings.MEDIA_ROOT}),
     )
     #urlpatterns += staticfiles_urlpatterns()
+
+
+urlpatterns += patterns('',
+    url(r'^', include('cms.urls')),
+)

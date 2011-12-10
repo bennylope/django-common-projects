@@ -4,15 +4,19 @@
 ### Django, derp derp
 Django
 
+### django-cms related
+django-mptt
+django-cms
+
 ### Data migrations
-south
+South
 
 ### Development
 django-debug-toolbar
 django-extensions
 
 ### Logging
-sentry
+django-sentry
 
 ### Deployment
-fabric
+Fabric
