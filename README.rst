@@ -19,13 +19,14 @@ Current
 -------
 
 * Basic (one language, locale)
+* Django-CMS
 
 Planned
 -------
 
-* Django-CMS
 * Multi-lingual (basic disabled i18n, l10n)
 * Social
+* E-commerce
 
 App roadmap
 ===========
