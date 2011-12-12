@@ -35,9 +35,15 @@ LANGUAGE_CODE = 'en-us'
 
 SITE_ID = 1
 
+gettext = lambda s: s
+
+LANGUAGES = [
+    ('en-us', 'English'),
+]
+
 # If you set this to False, Django will make some optimizations so as not
 # to load the internationalization machinery.
-USE_I18N = False
+USE_I18N = True
 
 # If you set this to False, Django will not format dates, numbers and
 # calendars according to the current locale
@@ -96,15 +102,31 @@ MIDDLEWARE_CLASSES = (
     'django.middleware.csrf.CsrfViewMiddleware',
     'django.contrib.auth.middleware.AuthenticationMiddleware',
     'django.contrib.messages.middleware.MessageMiddleware',
+    'cms.middleware.multilingual.MultilingualURLMiddleware',
+    'cms.middleware.page.CurrentPageMiddleware',
+    'cms.middleware.user.CurrentUserMiddleware',
+    'cms.middleware.toolbar.ToolbarMiddleware',
+
 )
 
-ROOT_URLCONF = 'basic.urls'
+ROOT_URLCONF = 'cms_project.urls'
 
 TEMPLATE_DIRS = (
     # Put strings here, like "/home/html/django_templates" or "C:/www/django/templates".
     # Always use forward slashes, even on Windows.
     # Don't forget to use absolute paths, not relative paths.
     os.path.join(PROJECT_ROOT, 'templates/')
+)
+
+TEMPLATE_CONTEXT_PROCESSORS = (
+    # default template context processors
+    'django.core.context_processors.auth',
+    'django.core.context_processors.debug',
+    'django.core.context_processors.request',
+    'django.core.context_processors.media',
+    'django.core.context_processors.static',
+    'cms.context_processors.media',
+    'sekizai.context_processors.sekizai',
 )
 
 INSTALLED_APPS = (
@@ -190,3 +212,38 @@ LOGIN_REDIRECT_URL = '/admin/'
 SKIP_SOUTH_TESTS = True
 SOUTH_TESTS_MIGRATE = False
 
+
+# Django-CMS settings
+# The settings for Django-CMS include two very important settings for updating
+# any templates: CMS_TEMPALTES and CMS_PLACEHOLDER_CONF. The former governs
+# which templates are available to select from when creating a new page or
+# editing an exisitng CMS page. The latter dictates what plugins can show up in
+# which defined placeholders.
+CMS_TEMPLATES = (
+        ('cms/index.html', 'Index'),
+)
+#CMS_MEDIA_URL = "/static/cms/"
+#CMS_MEDIA_PATH = "cms/"
+#CMS_MEDIA_ROOT = os.path.join(MEDIA_ROOT, "cms")
+CMS_DEFAULT_LANGUAGE = 'en-us'
+CMS_SEO_FIELDS = True
+CMS_SOFTROOT = False
+CMS_FLAT_URLS = False
+CMS_PAGE_MEDIA_PATH = 'uploads'
+CMS_MODERATOR = False
+CMS_PERMISSION = False
+
+CMS_APPHOOKS = ()
+
+CMS_LANGUAGES = (
+    ('fr', gettext('French')),
+    ('de', gettext('German')),
+    ('en', gettext('English')),
+)
+
+CMS_PLACEHOLDER_CONF = {
+  'helloworld': {
+      "plugins": ('TextPlugin',),
+      "name": "Hello world"
+  },
+}
