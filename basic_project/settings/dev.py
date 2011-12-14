@@ -44,4 +44,7 @@ DEBUG_TOOLBAR_PANELS = (
     'debug_toolbar.panels.logger.LoggingPanel',
 )
 
-#
+try:
+    from local_settings import *
+except ImportError:
+    pass
