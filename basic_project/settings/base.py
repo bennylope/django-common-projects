@@ -80,7 +80,8 @@ STATICFILES_DIRS = (
 STATICFILES_FINDERS = (
     'django.contrib.staticfiles.finders.FileSystemFinder',
     'django.contrib.staticfiles.finders.AppDirectoriesFinder',
-#    'django.contrib.staticfiles.finders.DefaultStorageFinder',
+    #'django.contrib.staticfiles.finders.DefaultStorageFinder',
+    'compressor.finders.CompressorFinder',
 )
 
 # List of callables that know how to import templates from various sources.
@@ -121,6 +122,7 @@ INSTALLED_APPS = (
     'south',
     'sentry',
     'sentry.client',
+    'compressor',
 )
 
 # A sample logging configuration. The only tangible logging
@@ -180,3 +182,15 @@ LOGIN_REDIRECT_URL = '/admin/'
 # SOUTH_USE_PYC
 SKIP_SOUTH_TESTS = True
 SOUTH_TESTS_MIGRATE = False
+
+
+# Static file compression settings
+#COMPRESS_CSS_FILTERS
+#COMPRESS_JS_FILTERS
+COMPRESS_OFFLINE = True
+COMPRESS_OFFLINE_TIMEOUT = 71536000
+COMPRESS_OFFLINE_CONTEXT = {
+    'STATIC_URL': STATIC_URL,
+    'MEDIA_URL': MEDIA_URL,
+}
+COMPRESS_OFFLINE_MANIFEST = 'manifest.json'

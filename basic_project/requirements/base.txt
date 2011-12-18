@@ -4,7 +4,7 @@
 ### Django, derp derp
 Django
 
-### Data migrations
+### Schema & data migrations
 South
 
 ### Development
@@ -13,6 +13,9 @@ django-extensions
 
 ### Logging
 django-sentry
+
+### Static media
+django_compressor
 
 ### Deployment
 Fabric
