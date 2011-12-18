@@ -18,6 +18,9 @@ django-extensions
 ### Logging
 django-sentry
 
+### Caching
+python-memcached
+
 ### Static media
 django_compressor
 
