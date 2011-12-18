@@ -23,7 +23,22 @@ if settings.DEBUG:
     )
     #urlpatterns += staticfiles_urlpatterns()
 
+# Standard account and registration URLs
+urlpatterns += patterns('',
+    url(r'^account/password_reset/$',
+        'django.contrib.auth.views.password_reset', name='password_reset'),
+    url(r'^account/password_reset/done/$',
+        'django.contrib.auth.views.password_reset_done',
+        name='password_reset_done'),
+    url(r'^account/reset/(?P<uidb36>[0-9A-Za-z]+)-(?P<token>.+)/$',
+        'django.contrib.auth.views.password_reset_confirm',
+        name='password_reset_confirm'),
+    url(r'^account/reset/done/$',
+        'django.contrib.auth.views.password_reset_complete',
+        name='password_reset_complete'),
+)
 
+# The CMS URL config is a catch all
 urlpatterns += patterns('',
     url(r'^', include('cms.urls')),
 )
