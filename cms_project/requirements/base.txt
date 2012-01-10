@@ -5,7 +5,7 @@
 Django
 
 ### django-cms related
-django-mptt
+django-mptt==0.5.1 #Negative indexing error in Django-CMS Page admin view due to MPTT 0.5.2 
 django-cms
 
 ### Schema & data migrations
