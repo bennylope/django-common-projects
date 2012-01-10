@@ -235,7 +235,7 @@ COMPRESS_OFFLINE_MANIFEST = 'manifest.json'
 # editing an exisitng CMS page. The latter dictates what plugins can show up in
 # which defined placeholders.
 CMS_TEMPLATES = (
-        ('cms/index.html', 'Index'),
+        ('site/index.html', 'Index'),
 )
 #CMS_MEDIA_URL = "/static/cms/"
 #CMS_MEDIA_PATH = "cms/"
